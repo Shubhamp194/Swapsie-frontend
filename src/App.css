@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+body {
+    background: linear-gradient(to right, rgb(202, 185, 221), rgb(145, 177, 214));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.LoginPage, .RegistrationPage, .Add-product-page{
+    text-align: center;
+    display: flex;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-box, .login-form, .registration-form, .add-product-form{
+    display: flex;
+    flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-box{
+    border: 2px white solid;
+    padding: 4rem;
+    border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.product-img{
+    height: 200px;
+    width: 215px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.All-products-page, .My-products-page{
+    min-height: 91vh;    
+    /* background: linear-gradient(to right, green, yellow); */
+    background: linear-gradient(to right, #e79530, #da5530);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.product-card{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    width: 220px;
+    height: 250px;
+    margin: 10px;
+    text-align: center;
+    padding: 1px;
+    background-color: aquamarine;
+}
+
+
+.Product-info-page{
+    min-height: 91vh;    
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-info-card{
+    display: flex;
+    justify-content:center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.product-info-card .product-img{
+    border: 1px solid grey;
+    height: 400px;
+    width: 415px;
+}
+
+.product-details{
+    /* border: 2px solid black; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    text-align: left;
+    margin: 20px;
+}
+
+.my-profile-page, .person-details{
+    text-align: center;
+    min-height: 91vh;
+    justify-items: center;
+}
+
+label{
+    text-align: left;
+}
+
+input{
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
 }
