@@ -14,11 +14,11 @@ function ProductInfoCard(props) {
   const { id, imgLink, name, description, owner, ownerId } = props;
 
   async function deletePrd(prdId) {
-    setShowConfirm(false);
     await axios.delete(`http://localhost:8081/product/delete/${prdId}`);
     alert(
       "Product deteted succussfully !!!.\nRedirecting to My Products page."
     );
+    setShowConfirm(false);
     navigate(routes.MyProducts);
   }
 

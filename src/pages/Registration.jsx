@@ -22,12 +22,21 @@ function Registration() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // console.log("submitted");
-    // console.log(user);
-    await axios.post("http://localhost:8081/user/register", user);
-    alert("Registration successful\nRedirecting to Login Page");
-    navigate(routes.LoginPage);
-    // window.location.reload(true);
+
+    const isFormValid = Object.values(user).every((value) => value !== "");
+
+    if (!isFormValid) {
+      alert("Error !!!. Please fill out all fields");
+    } else {
+      // send the data to the backend API
+      try {
+        await axios.post("http://localhost:8081/user/register", user);
+        alert("Registration successful\nRedirecting to Login Page");
+        navigate(routes.LoginPage);
+      } catch {
+        alert("Error !!!. Invalid Inputs");
+      }
+    }
   }
 
   return (
@@ -39,7 +48,7 @@ function Registration() {
           <input
             name="fname"
             type="text"
-            value={user.fName}
+            value={user.fname}
             placeholder="Enter first  name"
             onChange={handleChange}
           />
@@ -47,7 +56,7 @@ function Registration() {
           <input
             name="lname"
             type="text"
-            value={user.lName}
+            value={user.lname}
             placeholder="Enter last  name"
             onChange={handleChange}
           />

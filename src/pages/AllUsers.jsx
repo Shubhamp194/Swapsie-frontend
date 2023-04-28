@@ -18,9 +18,12 @@ function AllUsers() {
       <h2 style={{ textAlign: "center" }}>List of users</h2>
       <ul>
         {users.map((user) => {
-          return <li key={user.id}>{user.fname}</li>;
+          return (
+            <li key={user.id}>
+              {user.fname} {user.lname}
+            </li>
+          );
         })}
-        <li>Static Shubham</li>
       </ul>
     </div>
   );

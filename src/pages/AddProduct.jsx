@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
-import { UserContext } from "../contexts/UserContext";
+// import { UserContext } from "../contexts/UserContext";
 
 function AddProduct() {
   // const { user, setUser } = useContext(UserContext);
@@ -47,11 +47,20 @@ function AddProduct() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // if (user != null) checkLogin();
-    // setOwner();
-    await axios.post("http://localhost:8081/product/add", product);
-    alert("Product added successfully \nRedirecting to My Products Page");
-    navigate(routes.MyProducts);
+
+    const isFormValid = Object.values(product).every((value) => value !== "");
+
+    if (!isFormValid) {
+      alert("Error !!!. Please fill out all fields");
+    } else {
+      try {
+        await axios.post("http://localhost:8081/product/add", product);
+        alert("Product added successfully \nRedirecting to My Products Page");
+        navigate(routes.MyProducts);
+      } catch {
+        alert("Error !!!. Invalid inputs");
+      }
+    }
   }
 
   return (
