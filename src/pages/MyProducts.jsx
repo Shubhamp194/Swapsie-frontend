@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/UserContext";
+// import { UserContext } from "../contexts/UserContext";
 import routes from "../router/route";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
@@ -9,9 +9,12 @@ import { imgUrls } from "../utils/constants";
 function MyProducts() {
   let navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const id = user.id;
+  let id;
+
+  if (user != null) id = user.id;
 
   const [products, setProducts] = useState([]);
 
@@ -23,12 +26,12 @@ function MyProducts() {
   }
 
   useEffect(() => {
-    if (user == null) {
+    if (!localStorage.getItem("user")) {
       alert("Please login first !!! \nRedirecting to Login Page");
       navigate(routes.LoginPage);
     } else {
       getData();
-      console.log(products);
+      // console.log(products);
     }
   }, []);
 
@@ -37,30 +40,24 @@ function MyProducts() {
       <h2>My Products</h2>
 
       <div className="My-products-page">
-        {products.map((prod) => {
-          return (
-            <ProductCard
-              key={prod.id}
-              id={prod.id}
-              name={prod.name}
-              imgUrl={prod.imgLink}
-              description={prod.description}
-              owner={prod.user.fname}
-            />
-          );
-        })}
-
-        <ProductCard
-          name="Static Guitar"
-          imgUrl={imgUrls.Guitar}
-          description="This is a yamaha guitar"
-        />
-
-        <ProductCard
-          name="Static Bike"
-          imgUrl={imgUrls.KTM}
-          description="This is a KTM bike"
-        />
+        {products.length > 0 ? (
+          products.map((prod) => {
+            return (
+              <ProductCard
+                key={prod.id}
+                id={prod.id}
+                name={prod.name}
+                imgUrl={prod.imgLink}
+                description={prod.description}
+                owner={prod.user.fname}
+              />
+            );
+          })
+        ) : (
+          <h5 style={{ margin: "20px" }}>
+            You have not added any products. Please add some products.
+          </h5>
+        )}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ function ProductInfoPage() {
   async function loadProducts() {
     const response = await axios.get(`http://localhost:8081/product/${id}`);
     setProduct(response.data);
-    console.log(response.data);
+    // console.log(response.data);
   }
 
   useEffect(() => {
@@ -33,10 +33,12 @@ function ProductInfoPage() {
     <div className="Product-info-page">
       <h3>{product.name} Details</h3>
       <ProductInfoCard
+        id={product.id}
         name={product.name}
         imgLink={product.imgLink}
         description={product.description}
         owner={product.user.fname + " " + product.user.lname}
+        ownerId={product.user.id}
       />
     </div>
   );

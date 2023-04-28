@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import routes from "../router/route";
 
 function Registration() {
   const [user, setUser] = useState({
@@ -24,8 +25,8 @@ function Registration() {
     // console.log("submitted");
     // console.log(user);
     await axios.post("http://localhost:8081/user/register", user);
-    alert("Registration successful");
-    navigate("/");
+    alert("Registration successful\nRedirecting to Login Page");
+    navigate(routes.LoginPage);
     // window.location.reload(true);
   }
 

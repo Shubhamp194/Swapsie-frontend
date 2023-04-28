@@ -7,18 +7,24 @@ import routes from "../router/route";
 function Navbar() {
   let navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   function logout() {
     // console.log("logged out");
-    setUser(null);
+    // setUser(null);
+    localStorage.removeItem("user");
     alert("Logged out successfully \nRedirecting to Login Page");
     navigate(routes.LoginPage);
   }
 
   return (
     <div>
-      <div style={{ backgroundColor: "black", padding: "5px" }}>
+      <div
+        className="navbar"
+        // style={{ backgroundColor: "black", padding: "5px" }}
+      >
         <Link
           to={route.LandingPage}
           className="btn btn-info"
@@ -35,21 +41,21 @@ function Navbar() {
           Create Account
         </Link> */}
 
-        <Link
+        {/* <Link
           to={route.AllProducts}
           className="btn btn-info"
           style={{ margin: "5px" }}
         >
           All Products
-        </Link>
+        </Link> */}
 
-        <Link
+        {/* <Link
           to={route.AllUsers}
           className="btn btn-info"
           style={{ margin: "5px" }}
         >
           All Users
-        </Link>
+        </Link> */}
 
         <Link
           to={route.MyProducts}
@@ -67,21 +73,21 @@ function Navbar() {
           Add Products
         </Link>
 
-        <Link
-          to={route.TradeRequests}
-          className="btn btn-primary"
-          style={{ margin: "5px" }}
-        >
-          Trade Requests
-        </Link>
-
         {/* <Link
-          to={route.ProductInfo}
+          to={route.CreateSwapRequestPage}
           className="btn btn-info"
           style={{ margin: "5px" }}
         >
-          Products Info Page
+          Create SwapRequest
         </Link> */}
+
+        <Link
+          to={route.MyAllSwapRequestsPage}
+          className="btn btn-primary"
+          style={{ margin: "5px" }}
+        >
+          My Swap Requests
+        </Link>
 
         {!user && (
           <Link
@@ -99,7 +105,7 @@ function Navbar() {
             className="btn btn-secondary"
             style={{ margin: "5px" }}
           >
-            USER - {user.fname}
+            My Profile : {user.fname}
           </Link>
         )}
 

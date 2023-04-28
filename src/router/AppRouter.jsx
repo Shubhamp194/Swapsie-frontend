@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "../pages/Login";
-import RequestItems from "../pages/RequestItems";
 import Registration from "../pages/Registration";
 import AllProducts from "../pages/AllProducts";
 import MyProducts from "../pages/MyProducts";
@@ -10,7 +9,11 @@ import route from "./route";
 import AddProduct from "../pages/AddProduct";
 import ProductInfoPage from "../pages/ProductInfoPage";
 import MyProfile from "../pages/MyProfile";
-import TradeRequests from "../pages/TradeRequests";
+import MyAllSwapRequestsPage from "../pages/MyAllSwapRequestsPage";
+import EditProduct from "../pages/EditProduct";
+import OutgoingSwapRequestsPage from "../pages/OutgoingSwapRequestsPage";
+import IncomingSwapRequestsPage from "../pages/IncomingSwapRequestsPage";
+import CreateSwapRequestPage from "../pages/CreateSwapRequestPage";
 
 function AppRouter() {
   return (
@@ -26,7 +29,23 @@ function AppRouter() {
         <Route path={route.Registration} element={<Registration />} />
         <Route path={route.ProductInfo} element={<ProductInfoPage />} />
         <Route path={route.MyProfile} element={<MyProfile />} />
-        <Route path={route.TradeRequests} element={<TradeRequests />} />
+        <Route
+          path={route.MyAllSwapRequestsPage}
+          element={<MyAllSwapRequestsPage />}
+        />
+        <Route
+          path={route.IncomingSwapRequestsPage}
+          element={<IncomingSwapRequestsPage />}
+        />
+        <Route
+          path={route.OutgoingSwapRequestsPage}
+          element={<OutgoingSwapRequestsPage />}
+        />
+        <Route path={route.EditProduct} element={<EditProduct />} />
+        <Route
+          path={route.CreateSwapRequestPage}
+          element={<CreateSwapRequestPage />}
+        />
         <Route path="/*" element={<AllUsers />} />
       </Routes>
     </div>

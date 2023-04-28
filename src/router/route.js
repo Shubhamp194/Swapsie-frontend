@@ -8,6 +8,10 @@ const routes = Object.freeze({
   AddProduct: "/addProduct",
   AllUsers: "/allUsers",
   MyProfile: "/myProfile",
-  TradeRequests: "/tradeRequests",
+  MyAllSwapRequestsPage: "/MyAllSwapRequestsPage",
+  EditProduct: "/editProduct/:id",
+  IncomingSwapRequestsPage: "/incomingSwapRequestsPage",
+  OutgoingSwapRequestsPage: "/outgoingSwapRequestsPage",
+  CreateSwapRequestPage: "/createSwapRequestPage/:id",
 });
 export default routes;

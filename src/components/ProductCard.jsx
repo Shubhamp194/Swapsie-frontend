@@ -13,9 +13,11 @@ function ProductCard(props) {
       <img className="product-img" src={imgUrl} alt="Product pic" />
       <h5>{name}</h5>
 
-      <Link className="btn btn-info" to={`/productInfo/${id}`}>
-        Know more
-      </Link>
+      {id != -1 && (
+        <Link className="btn btn-info" to={`/productInfo/${id}`}>
+          Know more
+        </Link>
+      )}
       {/*       
       <button onClick={handleClick} className="btn btn-info">
         Know More

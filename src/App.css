@@ -2,6 +2,13 @@ body {
     background: linear-gradient(to right, rgb(202, 185, 221), rgb(145, 177, 214));
 }
 
+.navbar{
+    background-color: black;
+    padding: 5px;
+    display: flex;
+    justify-content:left;
+}
+
 .LoginPage, .RegistrationPage, .Add-product-page{
     text-align: center;
     display: flex;
@@ -32,6 +39,48 @@ body {
     background: linear-gradient(to right, #e79530, #da5530);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.swap-request-page{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.swap-request-card{
+    display: flex;
+    text-align: center;
+    border: 2px solid black;
+    align-items: center;
+    border-radius: 30px;
+    height: 350px;
+    justify-content: center;
+    margin: 20px;
+    background-color: rgb(115, 233, 151);
+}
+
+.swap-request-element{
+    text-align: center;
+    /* border: 2px solid yellow; */
+    width: 260px;
+    height: 260px;
+    margin: 10px;
+    align-self: center;
+}
+
+.actions-box{
+    border: none;
+    width: 220px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.actions-box button{
+    margin: 2px;
 }
 
 .product-card{
@@ -80,6 +129,25 @@ body {
     text-align: center;
     min-height: 91vh;
     justify-items: center;
+}
+
+.create-swap-request-page{
+    display: flex;
+    /* flex-direction: column; */
+    border: 2px solid yellow;
+    height: 91vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-swap-request-card{
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 20px;
+    background-color: beige;
+    width: 80ch;
+    height: 80vh;
 }
 
 label{

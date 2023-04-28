@@ -1,22 +1,21 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import routes from "../router/route";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import routes from "../router/route";
+import axios from "axios";
 
-function AddProduct() {
-  // const { user, setUser } = useContext(UserContext);
-
+function EditProduct() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   let navigate = useNavigate();
 
+  const { id } = useParams();
   const [product, setProduct] = useState({
     name: "",
     description: "",
     imgLink: "",
     user: {
-      id: user != null ? user.id : "",
+      id: "",
     },
   });
 
@@ -28,8 +27,15 @@ function AddProduct() {
   }
 
   useEffect(() => {
-    checkLogin();
+    // checklogin();
+    loadProducts();
   }, []);
+
+  async function loadProducts() {
+    const response = await axios.get(`http://localhost:8081/product/${id}`);
+    setProduct(response.data);
+    // console.log(response.data);
+  }
 
   function handleChange(e) {
     setProduct({
@@ -38,26 +44,22 @@ function AddProduct() {
     });
   }
 
-  // function setOwner() {
-  //   setProduct({
-  //     ...product,
-  //     [user]: { user },
-  //   });
-  // }
-
   async function handleSubmit(e) {
     e.preventDefault();
-    // if (user != null) checkLogin();
-    // setOwner();
-    await axios.post("http://localhost:8081/product/add", product);
-    alert("Product added successfully \nRedirecting to My Products Page");
-    navigate(routes.MyProducts);
+    if (user == null) {
+      checkLogin();
+      return;
+    }
+    await axios.put(`http://localhost:8081/product/update/${id}`, product);
+    alert("Product modified successfully \nRedirecting to Products Info Page");
+    navigate(`/productInfo/${product.id}`);
+    // navigate(routes.ProductInfo);
   }
 
   return (
     <div className="Add-product-page">
       <div className="form-box">
-        <h2>Add Product</h2>
+        <h2>Edit Product Details</h2>
         <form className="add-product-form" onSubmit={handleSubmit}>
           <label>Name</label>
           <input
@@ -86,8 +88,8 @@ function AddProduct() {
             onChange={handleChange}
           />
 
-          <button type="submit" className="btn btn-primary">
-            Add Product
+          <button type="submit" className="btn btn-success">
+            Save Changes
           </button>
         </form>
       </div>
@@ -95,4 +97,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default EditProduct;

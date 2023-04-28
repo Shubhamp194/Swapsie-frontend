@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
+// import { UserContext } from "../contexts/UserContext";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import routes from "../router/route";
@@ -12,7 +12,7 @@ function Login() {
     password: "",
   });
 
-  const { user, setUser } = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
 
   function onChangeHandler(e) {
     setCredentials({
@@ -23,15 +23,17 @@ function Login() {
 
   async function onSubmitHandler(e) {
     e.preventDefault();
-    console.log("submitted");
-    console.log(credentials);
-    const response = await axios.post(
-      "http://localhost:8081/user/login",
-      credentials
-    );
-    setUser(response.data);
-    alert("Login Successful \nRedirecting to the home page ");
-    navigate(routes.LandingPage);
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/user/login",
+        credentials
+      );
+      localStorage.setItem("user", JSON.stringify(response.data));
+      alert("Login Successful \nRedirecting to the home page ");
+      navigate(routes.LandingPage);
+    } catch {
+      alert("Invalid Credentails !!!");
+    }
   }
 
   return (

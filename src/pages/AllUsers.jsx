@@ -21,8 +21,6 @@ function AllUsers() {
           return <li key={user.id}>{user.fname}</li>;
         })}
         <li>Static Shubham</li>
-        <li>Static Shubham</li>
-        <li>Static Shubham</li>
       </ul>
     </div>
   );

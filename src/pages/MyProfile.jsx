@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import routes from "../router/route";
 
 function MyProfile() {
-  const { user, setUser } = useContext(UserContext);
-  //   const user = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   let navigate = useNavigate();
 
@@ -43,7 +43,7 @@ function MyProfile() {
             className="btn btn-success"
             style={{ margin: "5px" }}
           >
-            My Trade Requests
+            My Swap Requests
           </Link>
         </div>
       </div>
