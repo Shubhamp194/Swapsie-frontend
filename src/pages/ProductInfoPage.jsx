@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductInfoCard from "../components/ProductInfoCard";
+import { baseUrl } from "../utils/constants";
 
 function ProductInfoPage() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ function ProductInfoPage() {
   });
 
   async function loadProducts() {
-    const response = await axios.get(`http://localhost:8081/product/${id}`);
+    const response = await axios.get(baseUrl + `/product/${id}`);
     setProduct(response.data);
     // console.log(response.data);
   }

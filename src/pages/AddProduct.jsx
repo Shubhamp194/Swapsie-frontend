@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
+import { baseUrl } from "../utils/constants";
 // import { UserContext } from "../contexts/UserContext";
 
 function AddProduct() {
@@ -54,7 +55,7 @@ function AddProduct() {
       alert("Error !!!. Please fill out all fields");
     } else {
       try {
-        await axios.post("http://localhost:8081/product/add", product);
+        await axios.post(baseUrl + "/product/add", product);
         alert("Product added successfully \nRedirecting to My Products Page");
         navigate(routes.MyProducts);
       } catch {

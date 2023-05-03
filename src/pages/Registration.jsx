@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
+import { baseUrl } from "../utils/constants";
 
 function Registration() {
   const [user, setUser] = useState({
@@ -30,7 +31,7 @@ function Registration() {
     } else {
       // send the data to the backend API
       try {
-        await axios.post("http://localhost:8081/user/register", user);
+        await axios.post(baseUrl + "/user/register", user);
         alert("Registration successful\nRedirecting to Login Page");
         navigate(routes.LoginPage);
       } catch {

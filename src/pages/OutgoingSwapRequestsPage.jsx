@@ -4,6 +4,7 @@ import SwapRequestCard from "../components/SwapRequestCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
+import { baseUrl } from "../utils/constants";
 
 function OutgoingSwapRequestsPage() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,14 +17,14 @@ function OutgoingSwapRequestsPage() {
   const [dataFromApi, setDataFromApi] = useState([]);
 
   async function deleteHandler(requestId) {
-    await axios.delete(`http://localhost:8081/swapRequest/delete/${requestId}`);
+    await axios.delete(baseUrl + `/swapRequest/delete/${requestId}`);
     alert("Deleted !!!");
     navigate(routes.OutgoingSwapRequestsPage);
   }
 
   async function getData() {
     const response = await axios.get(
-      `http://localhost:8081/swapRequest/getAllSwapRequestsByUser1/${user.id}`
+      baseUrl + `/swapRequest/getAllSwapRequestsByUser1/${user.id}`
     );
     setDataFromApi(response.data);
   }

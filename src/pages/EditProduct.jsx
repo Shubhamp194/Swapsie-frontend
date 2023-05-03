@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import routes from "../router/route";
 import axios from "axios";
+import { baseUrl } from "../utils/constants";
 
 function EditProduct() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -32,7 +33,7 @@ function EditProduct() {
   }, []);
 
   async function loadProducts() {
-    const response = await axios.get(`http://localhost:8081/product/${id}`);
+    const response = await axios.get(baseUrl + `/product/${id}`);
     setProduct(response.data);
     // console.log(response.data);
   }
@@ -50,7 +51,7 @@ function EditProduct() {
       checkLogin();
       return;
     }
-    await axios.put(`http://localhost:8081/product/update/${id}`, product);
+    await axios.put(baseUrl + `/product/update/${id}`, product);
     alert("Product modified successfully \nRedirecting to Products Info Page");
     navigate(`/productInfo/${product.id}`);
     // navigate(routes.ProductInfo);

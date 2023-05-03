@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { baseUrl } from "../utils/constants";
 
 function AllUsers() {
   const [users, setUsers] = useState([]);
 
   async function getData() {
-    const res = await axios.get("http://localhost:8081/user/getUsers");
+    const res = await axios.get(baseUrl + "/user/getUsers");
     setUsers(res.data);
   }
 

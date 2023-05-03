@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
-import { imgUrls } from "../utils/constants";
+import { baseUrl, imgUrls } from "../utils/constants";
 
 function MyProducts() {
   let navigate = useNavigate();
@@ -19,9 +19,7 @@ function MyProducts() {
   const [products, setProducts] = useState([]);
 
   async function getData() {
-    const response = await axios.get(
-      `http://localhost:8081/product/user/${id}`
-    );
+    const response = await axios.get(baseUrl + `/product/user/${id}`);
     setProducts(response.data);
   }
 

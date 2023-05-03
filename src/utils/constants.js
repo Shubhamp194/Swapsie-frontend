@@ -1,3 +1,5 @@
+export const baseUrl = "";
+
 export const imgUrls = {
   Guitar:
     "https://www.popsci.com/uploads/2023/01/20/Cordoba-C5-CE-best-acoustic-guitars-with-nylon-strings.jpg?auto=webp",

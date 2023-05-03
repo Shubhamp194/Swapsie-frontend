@@ -3,6 +3,7 @@ import CreateSwapRequestCard from "../components/CreateSwapRequestCard";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import routes from "../router/route";
+import { baseUrl } from "../utils/constants";
 
 function CreateSwapRequestPage() {
   let navigate = useNavigate();
@@ -35,15 +36,13 @@ function CreateSwapRequestPage() {
   });
 
   async function loadProductById(prdId) {
-    const response = await axios.get(`http://localhost:8081/product/${prdId}`);
+    const response = await axios.get(baseUrl + `/product/${prdId}`);
     setProduct2(response.data);
     return response.data;
   }
 
   async function loadMyProducts() {
-    const response = await axios.get(
-      `http://localhost:8081/product/user/${user.id}`
-    );
+    const response = await axios.get(baseUrl + `/product/user/${user.id}`);
     setMyProducts(response.data);
   }
 
@@ -96,10 +95,7 @@ function CreateSwapRequestPage() {
 
   async function sendSwapRequest() {
     try {
-      await axios.post(
-        "http://localhost:8081/swapRequest/create",
-        createdSwapRequest
-      );
+      await axios.post(baseUrl + "/swapRequest/create", createdSwapRequest);
       alert("Request sent !!!.\nNavigating to your sent request page");
       navigate(routes.OutgoingSwapRequestsPage);
     } catch {

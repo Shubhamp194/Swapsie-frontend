@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import routes from "../router/route";
+import { baseUrl } from "../utils/constants";
 
 function Login() {
   let navigate = useNavigate();
@@ -24,10 +25,7 @@ function Login() {
   async function onSubmitHandler(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8081/user/login",
-        credentials
-      );
+      const response = await axios.post(baseUrl + "/user/login", credentials);
       localStorage.setItem("user", JSON.stringify(response.data));
       alert("Login Successful \nRedirecting to the home page ");
       navigate(routes.LandingPage);

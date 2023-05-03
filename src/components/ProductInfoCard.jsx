@@ -3,6 +3,7 @@ import { UserContext } from "../contexts/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import routes from "../router/route";
 import axios from "axios";
+import { baseUrl } from "../utils/constants";
 
 function ProductInfoCard(props) {
   let navigate = useNavigate();
@@ -14,7 +15,7 @@ function ProductInfoCard(props) {
   const { id, imgLink, name, description, owner, ownerId } = props;
 
   async function deletePrd(prdId) {
-    await axios.delete(`http://localhost:8081/product/delete/${prdId}`);
+    await axios.delete(baseUrl+`/product/delete/${prdId}`);
     alert(
       "Product deteted succussfully !!!.\nRedirecting to My Products page."
     );

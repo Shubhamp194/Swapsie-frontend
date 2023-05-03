@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { imgUrls } from "../utils/constants";
+import { baseUrl, imgUrls } from "../utils/constants";
 import ProductCard from "../components/ProductCard";
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
 
   async function getData() {
-    const response = await axios.get(
-      "http://localhost:8081/product/getProducts"
-    );
+    const response = await axios.get(baseUrl + "/product/getProducts");
     setProducts(response.data);
   }
 

@@ -4,6 +4,7 @@ import SwapRequestCard from "../components/SwapRequestCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
+import { baseUrl } from "../utils/constants";
 
 function IncomingSwapRequestsPage() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,26 +17,26 @@ function IncomingSwapRequestsPage() {
   const [dataFromApi, setDataFromApi] = useState([]);
 
   async function acceptHandler(requestId) {
-    await axios.put(`http://localhost:8081/swapRequest/${requestId}/accept`);
+    await axios.put(baseUrl + `/swapRequest/${requestId}/accept`);
     alert("Accepted !!!\nRedirecting to My Products page");
     navigate(routes.MyProducts);
   }
 
   async function declineHandler(requestId) {
-    await axios.put(`http://localhost:8081/swapRequest/${requestId}/decline`);
+    await axios.put(baseUrl + `/swapRequest/${requestId}/decline`);
     alert("Decline !!!");
     navigate(routes.IncomingSwapRequestsPage);
   }
 
   async function deleteHandler(requestId) {
-    await axios.delete(`http://localhost:8081/swapRequest/delete/${requestId}`);
+    await axios.delete(baseUrl + `/swapRequest/delete/${requestId}`);
     alert("Deleted !!!");
     navigate(routes.IncomingSwapRequestsPage);
   }
 
   async function getData() {
     const response = await axios.get(
-      `http://localhost:8081/swapRequest/getAllSwapRequestsByUser2/${user.id}`
+      baseUrl + `/swapRequest/getAllSwapRequestsByUser2/${user.id}`
     );
     setDataFromApi(response.data);
   }
