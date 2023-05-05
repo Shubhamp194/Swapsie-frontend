@@ -7,7 +7,7 @@
         src: ./docker-compose.yml
         dest: ./
 
-    - name: run compose file
+    - name: run docker-compose file
       command: docker-compose up -d
 
     # - name: Prune the dangling Docker images
