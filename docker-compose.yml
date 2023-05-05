@@ -12,7 +12,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - /home/shubham/SPE_LAB/Major_Project/mysql:/var/lib/mysql
+      - swapsie-dp:/var/lib/mysql
 
   swapsie-backend-container:
     image: "shubhamp194/swapsie-backend-image"
@@ -44,5 +44,5 @@ networks:
   swapsie-network:
     driver: bridge
 
-# volumes:
-#   db-data
+volumes:
+  swapsie-dp:
