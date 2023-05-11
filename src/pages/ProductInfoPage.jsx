@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductInfoCard from "../components/ProductInfoCard";
 import { baseUrl } from "../utils/constants";
+const axiosInstance = axios.create();
 
 function ProductInfoPage() {
   const { id } = useParams();
@@ -21,7 +22,7 @@ function ProductInfoPage() {
   });
 
   async function loadProducts() {
-    const response = await axios.get(baseUrl + `/product/${id}`);
+    const response = await axiosInstance.get(baseUrl + `/product/${id}`);
     setProduct(response.data);
     // console.log(response.data);
   }

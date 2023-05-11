@@ -1,6 +1,5 @@
 {
   "name": "swapsie-frontend",
-  "proxy":"http://swapsie-backend-container:8081",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

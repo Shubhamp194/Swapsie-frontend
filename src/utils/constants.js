@@ -1,4 +1,4 @@
-export const baseUrl = "";
+export const baseUrl = "http://localhost:8081";
 
 export const imgUrls = {
   Guitar:

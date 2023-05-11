@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/route";
 import { baseUrl } from "../utils/constants";
+const axiosInstance = axios.create();
 
 function Registration() {
   const [user, setUser] = useState({
@@ -31,7 +32,7 @@ function Registration() {
     } else {
       // send the data to the backend API
       try {
-        await axios.post(baseUrl + "/user/register", user);
+        await axiosInstance.post(baseUrl + "/user/register", user);
         alert("Registration successful\nRedirecting to Login Page");
         navigate(routes.LoginPage);
       } catch {
