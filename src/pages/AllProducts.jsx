@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { baseUrl, imgUrls } from "../utils/constants";
 import ProductCard from "../components/ProductCard";
+const axiosInstance = axios.create();
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
 
   async function getData() {
-    const response = await axios.get(baseUrl + "/product/getProducts");
+    const response = await axiosInstance.get(baseUrl + "/product/getProducts");
     setProducts(response.data);
   }
 
