@@ -22,6 +22,7 @@ export const imgUrls = {
   Swap: "https://icon-library.com/images/swap-icon/swap-icon-15.jpg",
   Speaker:
     "https://images.unsplash.com/photo-1545454675-3531b543be5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  Bat: "https://plus.unsplash.com/premium_photo-1679690884082-eaba9eccdcb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=484&q=80",
 };
 
 export const staticSwapRequest = [

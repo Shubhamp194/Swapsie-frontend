@@ -99,7 +99,7 @@ function CreateSwapRequestPage() {
       alert("Request sent !!!.\nNavigating to your sent request page");
       navigate(routes.OutgoingSwapRequestsPage);
     } catch {
-      alert("Something went wrong !!!. Please try again");
+      alert("Please click send request once again");
     }
   }
 
