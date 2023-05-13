@@ -32,7 +32,7 @@ pipeline {
                 credentialsId: 'shubham',
                 disableHostKeyChecking: true,
                 inventory: 'inventory',
-                playbook: 'ansible-playbook.yml'
+                playbook: 'ansible-playbook.yml',
                 vaultCredentialsId: 'ansible-vault'
             }
         }
