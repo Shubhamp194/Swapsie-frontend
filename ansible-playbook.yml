@@ -1,11 +1,26 @@
 ---
-- name: Deploy Docker Image to Container
+- name: Deploy Docker Image to Container in host
   hosts: all
   tasks:
+
+    - name: Copy encryption file to remote host
+      copy:
+        src: .env
+        dest: ./
+
     - name: Copy compose file to remote host
       copy:
         src: ./docker-compose.yml
         dest: ./
+
+    # - name: Copy vault file to remote host
+    #   copy:
+    #     src: ./vault.txt
+    #     dest: ./
+
+
+    # - name: Decrypt the password from encryption file and store it in .env variables file
+    #   shell: ansible-vault decrypt --vault-password-file=vault.txt encryption.txt --output=.env
 
     - name: run docker-compose file
       command: docker-compose up -d
